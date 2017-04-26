@@ -19,12 +19,12 @@ Clone the repo in your plugins directory:
 * `$ cd ${ZSH_CUSTOM1:-$ZSH/custom}/plugins`
 * `$ git clone https://github.com/seripap/pkgjson-iterm-touchbar.git`
 
-### Configuring for NPM instead of yarn
-
-In `pkgjson-iterm-touchbar.plugin.zsh`, modify useYarn to `false` on line 6.
-
 Then add the plugin into your `~/.zshrc`:
 
 ```
 plugins=(... pkgjson-iterm-touchbar)
 ```
+
+### Configuring for NPM instead of yarn
+
+In `pkgjson-iterm-touchbar.plugin.zsh`, modify useYarn to `false` on line 6.
