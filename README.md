@@ -4,8 +4,8 @@
 
 *WARNING!* You must not have any keys binded to function in order for this script to work as it overwrites F1-F12.
 
-![preview1](./preview1.png)
-![preview2](./preview2.png)
+![preview1](./ss.png)
+![preview2](./ss2.png)
 
 ### Requirements
 
