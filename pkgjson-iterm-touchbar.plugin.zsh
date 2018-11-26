@@ -36,26 +36,30 @@ function _displayNpmScripts() {
     npmScripts=($(node -e "console.log(Object.keys($(npm run --json)).filter((name, idx) => idx < 24).join(' '))")) 
   fi
 
-  _clearTouchbar
-  _unbindTouchbar
+  if [[ $npmScripts == "" ]]; then
+    _clearTouchbar
+  else
+    _clearTouchbar
+    _unbindTouchbar
 
-  touchBarState='npm'
+    touchBarState='npm'
 
-  fnKeysIndex=1
-  for npmScript in "$npmScripts[@]"; do
-    if [[ $useYarn == true ]]; then
-    bindkey -s $fnKeys[$fnKeysIndex] "yarn $npmScript \n"
-    else
-      bindkey -s $fnKeys[$fnKeysIndex] "npm run $npmScript \n"
-    fi
-    echo -ne "\033]1337;SetKeyLabel=F$fnKeysIndex=👉🏻 $npmScript\a"
-    fnKeysIndex=$((fnKeysIndex + 1))
-  done
+    fnKeysIndex=1
+    for npmScript in "$npmScripts[@]"; do
+      if [[ $useYarn == true ]]; then
+      bindkey -s $fnKeys[$fnKeysIndex] "yarn $npmScript \n"
+      else
+        bindkey -s $fnKeys[$fnKeysIndex] "npm run $npmScript \n"
+      fi
+      echo -ne "\033]1337;SetKeyLabel=F$fnKeysIndex=👉🏻 $npmScript\a"
+      fnKeysIndex=$((fnKeysIndex + 1))
+    done
 
-  for fnKey in "$fnKeys[@]"; do
-    echo -ne "\033]1337;SetKeyLabel=F$fnKeysIndex=✕\a"
-    fnKeysIndex=$((fnKeysIndex + 1))
-  done
+    for fnKey in "$fnKeys[@]"; do
+      echo -ne "\033]1337;SetKeyLabel=F$fnKeysIndex=✕\a"
+      fnKeysIndex=$((fnKeysIndex + 1))
+    done
+  fi
 }
 
 zle -N _displayDefault
